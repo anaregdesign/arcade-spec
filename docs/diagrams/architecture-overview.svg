@@ -1,0 +1,187 @@
+<svg width="1400" height="980" viewBox="0 0 1400 980" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="40" y1="40" x2="1360" y2="940" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F4F8FF"/>
+      <stop offset="1" stop-color="#F8FBFD"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#F7FAFC"/>
+    </linearGradient>
+    <filter id="shadow" x="0" y="0" width="1400" height="980" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="12" stdDeviation="18" flood-color="#0F172A" flood-opacity="0.10"/>
+    </filter>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0 0L10 5L0 10V0Z" fill="#2563EB"/>
+    </marker>
+    <marker id="arrow-muted" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0 0L10 5L0 10V0Z" fill="#64748B"/>
+    </marker>
+    <style>
+      .title { font: 700 32px 'Segoe UI', Arial, sans-serif; fill: #0F172A; }
+      .subtitle { font: 400 16px 'Segoe UI', Arial, sans-serif; fill: #334155; }
+      .section { font: 700 16px 'Segoe UI', Arial, sans-serif; fill: #1E293B; letter-spacing: 0.04em; }
+      .label { font: 700 15px 'Segoe UI', Arial, sans-serif; fill: #0F172A; }
+      .body { font: 400 13px 'Segoe UI', Arial, sans-serif; fill: #475569; }
+      .small { font: 600 12px 'Segoe UI', Arial, sans-serif; fill: #1D4ED8; }
+      .note { font: 600 11px 'Segoe UI', Arial, sans-serif; fill: #475569; }
+      .chip { font: 600 11px 'Segoe UI', Arial, sans-serif; fill: #0F172A; }
+      .panel { fill: url(#panel); stroke: #D7E3F1; stroke-width: 1.5; }
+      .azure-panel { fill: #EEF6FF; stroke: #93C5FD; stroke-width: 1.5; }
+      .runtime-panel { fill: #F8FAFC; stroke: #CBD5E1; stroke-width: 1.5; }
+      .node { fill: #FFFFFF; stroke: #CBD5E1; stroke-width: 1.5; }
+      .accent { fill: #EFF6FF; stroke: #93C5FD; stroke-width: 1.5; }
+      .github { fill: #F8FAFC; stroke: #94A3B8; stroke-width: 1.5; }
+      .data { fill: #F8FAFC; stroke: #A7F3D0; stroke-width: 1.5; }
+      .ops { fill: #FFF7ED; stroke: #FDBA74; stroke-width: 1.5; }
+      .subnet-cae { fill: #ECFDF5; stroke: #86EFAC; stroke-width: 1.5; }
+      .subnet-pe { fill: #EFF6FF; stroke: #93C5FD; stroke-width: 1.5; }
+      .line { stroke: #2563EB; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+      .line-muted { stroke: #64748B; stroke-width: 2.5; fill: none; marker-end: url(#arrow-muted); }
+      .line-dashed { stroke: #2563EB; stroke-width: 2.5; stroke-dasharray: 8 8; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect x="20" y="20" width="1360" height="940" rx="28" fill="url(#bg)"/>
+  <rect x="40" y="40" width="1320" height="900" rx="24" fill="#FFFFFF" filter="url(#shadow)"/>
+
+  <text x="80" y="98" class="title">Arcade Repository Architecture</text>
+  <text x="80" y="126" class="subtitle">Current Azure hosting topology and GitHub release delivery path derived from README, Bicep, and workflow contracts.</text>
+
+  <rect x="60" y="170" width="260" height="150" rx="22" class="panel"/>
+  <text x="86" y="208" class="section">PUBLIC ENTRY</text>
+  <rect x="86" y="235" width="208" height="92" rx="18" class="accent"/>
+  <rect x="108" y="258" width="62" height="44" rx="14" fill="#DBEAFE" stroke="#60A5FA"/>
+  <path d="M125 283C125 267 138 255 154 255C170 255 183 267 183 283" stroke="#2563EB" stroke-width="3" stroke-linecap="round"/>
+  <path d="M143 280H165" stroke="#2563EB" stroke-width="3" stroke-linecap="round"/>
+  <text x="195" y="273" class="label">Players</text>
+  <text x="195" y="294" class="body">Browser and mobile</text>
+  <text x="195" y="312" class="body">clients use HTTPS</text>
+
+  <rect x="60" y="350" width="500" height="300" rx="24" class="github"/>
+  <text x="86" y="388" class="section">GITHUB DELIVERY</text>
+
+  <rect x="88" y="412" width="150" height="92" rx="18" class="node"/>
+  <image href="assets/github/github-invertocat.svg" x="108" y="430" width="42" height="42"/>
+  <text x="165" y="445" class="label">Release</text>
+  <text x="165" y="466" class="body">GitHub Actions</text>
+  <text x="165" y="484" class="body">OIDC rollout</text>
+
+  <rect x="260" y="412" width="150" height="92" rx="18" class="node"/>
+  <image href="assets/github/github-invertocat.svg" x="280" y="430" width="42" height="42"/>
+  <text x="338" y="445" class="label">GHCR</text>
+  <text x="338" y="466" class="body">Immutable image</text>
+  <text x="338" y="484" class="body">published first</text>
+
+  <rect x="88" y="536" width="204" height="88" rx="18" class="node"/>
+  <text x="110" y="566" class="label">Shared rollout workflow</text>
+  <text x="110" y="587" class="body">sync_runtime_config</text>
+  <text x="110" y="604" class="body">deploy_app and smoke_test</text>
+
+  <rect x="314" y="536" width="218" height="88" rx="18" class="ops"/>
+  <image href="assets/azure/container-app-job.svg" x="334" y="554" width="32" height="32"/>
+  <text x="377" y="566" class="label">Azure-hosted jobs</text>
+  <text x="377" y="587" class="body">bootstrap_sql and</text>
+  <text x="377" y="604" class="body">migrate_database</text>
+
+  <path d="M238 458H260" class="line"/>
+  <path d="M163 504V536" class="line-muted"/>
+  <text x="176" y="525" class="note">workflow call</text>
+  <path d="M335 504V536" class="line-muted"/>
+  <text x="348" y="525" class="note">image_ref</text>
+  <path d="M292 580H314" class="line"/>
+
+  <rect x="600" y="170" width="760" height="720" rx="26" class="azure-panel"/>
+  <text x="628" y="208" class="section">AZURE HOSTED PLATFORM</text>
+  <text x="628" y="236" class="subtitle">Front Door ingress, Container Apps runtime, public config stores, and a VNet reserved for delegated infrastructure and Azure SQL private connectivity.</text>
+
+  <rect x="630" y="260" width="700" height="220" rx="24" class="runtime-panel"/>
+  <text x="656" y="297" class="section">RUNTIME PATH</text>
+
+  <rect x="656" y="330" width="170" height="126" rx="20" class="node"/>
+  <image href="assets/azure/front-door.svg" x="711" y="349" width="60" height="60"/>
+  <text x="688" y="425" class="label">Azure Front Door</text>
+  <text x="688" y="445" class="body">Premium endpoint and</text>
+  <text x="704" y="462" class="body">private-link origin</text>
+
+  <rect x="880" y="330" width="170" height="126" rx="20" class="node"/>
+  <image href="assets/azure/container-apps-environment.svg" x="935" y="349" width="60" height="60"/>
+  <text x="895" y="425" class="label">Container Apps</text>
+  <text x="919" y="445" class="body">environment on</text>
+  <text x="930" y="462" class="body">snet-cae</text>
+
+  <rect x="1104" y="330" width="170" height="126" rx="20" class="node"/>
+  <image href="assets/azure/container-app-job.svg" x="1159" y="349" width="60" height="60"/>
+  <text x="1127" y="425" class="label">Container App runtime</text>
+  <text x="1152" y="445" class="body">SSR web process</text>
+  <text x="1129" y="462" class="body">external ingress enabled</text>
+
+  <rect x="1104" y="488" width="170" height="64" rx="16" fill="#EEF2FF" stroke="#A5B4FC" stroke-width="1.5"/>
+  <text x="1133" y="516" class="chip">Managed identities</text>
+  <text x="1124" y="535" class="body">runtime, migration, bootstrap</text>
+
+  <path d="M294 280H656" class="line"/>
+  <text x="438" y="266" class="small">HTTPS user traffic</text>
+  <path d="M826 393H880" class="line"/>
+  <text x="836" y="381" class="small">Private Link origin</text>
+  <path d="M1050 393H1104" class="line"/>
+  <text x="1070" y="381" class="small">Ingress</text>
+  <path d="M532 580C650 580 650 520 1104 520" class="line-dashed"/>
+  <text x="645" y="560" class="small">OIDC rollout and Azure-hosted jobs</text>
+
+  <rect x="630" y="510" width="700" height="330" rx="24" class="runtime-panel"/>
+  <text x="656" y="547" class="section">CONFIG, DATA, AND OBSERVABILITY</text>
+
+  <rect x="656" y="580" width="150" height="122" rx="18" class="node"/>
+  <image href="assets/azure/app-configuration.svg" x="701" y="600" width="58" height="58"/>
+  <text x="676" y="673" class="label">App Configuration</text>
+  <text x="686" y="692" class="body">public endpoint</text>
+  <text x="696" y="709" class="body">RBAC access</text>
+
+  <rect x="836" y="580" width="150" height="122" rx="18" class="node"/>
+  <image href="assets/azure/key-vault.svg" x="881" y="600" width="58" height="58"/>
+  <text x="878" y="673" class="label">Key Vault</text>
+  <text x="866" y="692" class="body">public endpoint</text>
+  <text x="876" y="709" class="body">RBAC access</text>
+
+  <rect x="1016" y="562" width="284" height="210" rx="18" class="data"/>
+  <image href="assets/azure/virtual-network.svg" x="1040" y="586" width="46" height="46"/>
+  <text x="1096" y="603" class="label">Virtual Network</text>
+  <text x="1096" y="621" class="body">10.0.0.0/16</text>
+
+  <rect x="1038" y="652" width="102" height="64" rx="12" class="subnet-cae"/>
+  <text x="1059" y="678" class="chip">snet-cae</text>
+  <text x="1048" y="697" class="note">delegated subnet</text>
+
+  <rect x="1160" y="642" width="118" height="88" rx="12" class="subnet-pe"/>
+  <image href="assets/azure/private-endpoint.svg" x="1173" y="655" width="22" height="22"/>
+  <text x="1202" y="667" class="chip">snet-pe</text>
+  <text x="1191" y="685" class="note">private endpoints</text>
+  <image href="assets/azure/sql-database.svg" x="1172" y="692" width="30" height="30"/>
+  <text x="1208" y="710" class="note">Azure SQL</text>
+
+  <text x="1040" y="746" class="note">Private DNS zone link supports the Azure SQL private path.</text>
+
+  <rect x="656" y="724" width="150" height="88" rx="18" class="node"/>
+  <image href="assets/azure/application-insights.svg" x="701" y="736" width="54" height="54"/>
+  <text x="682" y="804" class="label">Application Insights</text>
+
+  <rect x="836" y="724" width="150" height="88" rx="18" class="node"/>
+  <image href="assets/azure/log-analytics.svg" x="881" y="736" width="54" height="54"/>
+  <text x="872" y="804" class="label">Log Analytics</text>
+
+  <path d="M1189 456V652" class="line-muted"/>
+  <text x="1202" y="556" class="note">environment attachment</text>
+  <path d="M1104 612H986" class="line"/>
+  <text x="1000" y="600" class="small">reads secrets</text>
+  <path d="M1104 640H806" class="line"/>
+  <text x="820" y="628" class="small">loads settings</text>
+  <path d="M1104 668H1016" class="line"/>
+  <text x="1020" y="656" class="small">private SQL path</text>
+  <path d="M1189 456C1260 456 1260 768 986 768" class="line-muted"/>
+  <path d="M806 768H836" class="line-muted"/>
+  <text x="1212" y="620" class="note">telemetry</text>
+
+  <text x="650" y="905" class="body">Official Azure SVG icons are sourced from Microsoft Learn's Azure Architecture icon pack, and the GitHub mark comes from GitHub Brand Toolkit.</text>
+  <text x="650" y="925" class="body">The VNet drawing follows infra/main.bicep exactly: snet-cae for Container Apps infrastructure and snet-pe for Azure SQL private endpoints, while App Configuration and Key Vault remain on public endpoints.</text>
+</svg>

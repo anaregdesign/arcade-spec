@@ -8,6 +8,19 @@ Arcade is a React Router server-rendered web app for two competitive puzzle game
 - The repository target for hosted environments is Azure Container Apps with GitHub Release driven CD, `Microsoft Entra ID` sign-in, Azure SQL over `Private Endpoint`, App Configuration and Key Vault backed runtime config, Application Insights, and Log Analytics.
 - Operational notes for rollback, smoke checks, private-network verification, and observability live in `docs/production-operations.md`.
 
+## Architecture
+
+![Arcade architecture overview](docs/diagrams/architecture-overview.svg)
+
+This diagram reflects the current hosted contract in this repository.
+
+- GitHub Releases publish an immutable image to GHCR, then GitHub Actions uses OIDC to drive the Azure rollout path.
+- Azure Front Door Premium is the public entrypoint, with Azure Container Apps hosting the SSR web runtime.
+- Runtime configuration flows through App Configuration and Key Vault over RBAC-protected public endpoints, while the VNet is reserved for the Container Apps delegated subnet and the Azure SQL private-endpoint path.
+- Schema bootstrap and migration stay in Azure-hosted jobs instead of GitHub-hosted runners.
+
+The diagram uses local copies of official Azure Architecture icons from Microsoft Learn and the official GitHub mark from GitHub Brand Toolkit so the README can render without external asset dependencies.
+
 ## Local Development
 
 ### Prerequisites

@@ -156,3 +156,52 @@ production / shared Azure delivery は GitHub Workflow を唯一の control plan
 - Active plan: `/docs/plans/plan.md`
 - Azure prerequisites: `/docs/azure-prerequisites.md`
 - Production data path: `/docs/production-data-path.md`
+
+## Repository Architecture Diagram Publication
+
+### Summary
+
+README から参照できるリポジトリ全体のアーキテクチャ図を追加し、Azure のホスティング構成と GitHub ベースのリリース経路を一目で把握できる状態にする。
+
+### User Problem
+
+現在の README には Azure Front Door, Container Apps, Azure SQL, App Configuration, Key Vault, GitHub Actions OIDC, GHCR の関係を一枚で示す図がなく、リポジトリを初見で開いたときに公開構成と責務分離を把握しづらい。
+
+### Scope
+
+- リポジトリの Azure 公開構成を示すアーキテクチャ図を追加する
+- README から図を参照できるようにする
+- 図では可能な範囲で Azure と GitHub の公式アイコンを使う
+- GitHub release workflow から GHCR publish と Azure rollout へ流れる主要経路を表現する
+
+### Non-Goals
+
+- Azure リソース構成そのものを変更すること
+- README 以外の運用手順書を全面改稿すること
+- 実稼働の subscription, resource group, hostname を図に固定値として埋め込むこと
+
+### User-Visible Behavior
+
+- README にアーキテクチャ図セクションが追加される
+- 図を見ると、利用者のアクセス経路、Azure Front Door, Container App runtime, Azure-hosted job, App Configuration, Key Vault, Azure SQL, observability, GitHub Actions と GHCR のつながりが把握できる
+- 図はローカルのリポジトリアセットとして管理され、README から直接表示される
+
+### Acceptance Criteria
+
+- README からアーキテクチャ図が表示できる
+- 図がこのリポジトリの現在の Azure delivery contract と矛盾しない
+- 図中の主要 Azure サービスは Azure 公式 SVG アイコンで表現される
+- GitHub 側の release and rollout 経路が図中で識別できる
+- 仮想ネットワーク境界、delegated subnet、private endpoint subnet、Azure SQL private endpoint の位置関係が `infra/main.bicep` と矛盾しない
+
+### Constraints And Dependencies
+
+- 図は GitHub 上の README 表示を前提に、リポジトリ内のファイルとして参照できる形式にする
+- 表現対象は `README.md`, `infra/main.bicep`, `.github/workflows/*.yml`, `docs/production-operations.md`, `docs/production-data-path.md` と整合させる
+- `App Configuration` と `Key Vault` の公開状態は現行 Bicep の `publicNetworkAccess` 設定を優先して表現する
+
+### Links
+
+- Active plan: `/docs/plans/plan.md`
+- README: `/README.md`
+- Diagram target directory: `/docs/diagrams/`
